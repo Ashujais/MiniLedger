@@ -1,0 +1,36 @@
+-- MiniLedger PostgreSQL Schema
+
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  phone_number VARCHAR(20) NOT NULL UNIQUE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS otps (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  phone_number VARCHAR(20) NOT NULL,
+  otp VARCHAR(10) NOT NULL,
+  expires_at TIMESTAMP WITH TIME ZONE NOT NULL,
+  is_used BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS loans (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  friend_name VARCHAR(255) NOT NULL,
+  amount NUMERIC(12, 2) NOT NULL CHECK (amount > 0),
+  due_date DATE NOT NULL,
+  is_repaid BOOLEAN DEFAULT FALSE,
+  repaid_at TIMESTAMP WITH TIME ZONE,
+  notes TEXT,
+  receipt_url VARCHAR(1024),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_loans_user_id ON loans(user_id);
+CREATE INDEX IF NOT EXISTS idx_loans_due_date ON loans(due_date);
+CREATE INDEX IF NOT EXISTS idx_loans_is_repaid ON loans(is_repaid);
+CREATE INDEX IF NOT EXISTS idx_otps_phone ON otps(phone_number);

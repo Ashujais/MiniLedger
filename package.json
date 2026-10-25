@@ -1,0 +1,27 @@
+{
+  "name": "miniledger",
+  "version": "1.0.0",
+  "description": "MiniLedger - Full-stack mobile application to track money lent to friends",
+  "private": true,
+  "scripts": {
+    "start:backend": "npm --prefix backend run dev",
+    "start:mobile": "npm --prefix mobile start",
+    "build:backend": "npm --prefix backend run build",
+    "test:backend": "npm --prefix backend test",
+    "test:mobile": "npm --prefix mobile test",
+    "test": "npm --prefix backend test",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  },
+  "keywords": [
+    "miniledger",
+    "fintech",
+    "react-native",
+    "expo",
+    "nodejs",
+    "typescript",
+    "postgresql"
+  ],
+  "author": "Ashutosh Kumar Jaiswal",
+  "license": "MIT"
+}

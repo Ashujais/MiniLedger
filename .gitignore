@@ -1,0 +1,41 @@
+# Node / Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build Outputs
+dist/
+build/
+.expo/
+web-build/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Uploaded Files (preserve directory with .gitkeep)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Testing / Coverage
+coverage/
+*.lcov
+.nyc_output
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
