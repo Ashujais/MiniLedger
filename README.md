@@ -406,5 +406,5 @@ MiniLedger/
 
 ## 👨‍💻 Author
 **Ashutosh Kumar Jaiswal**  
-GitHub: [@Ashutosh00567](https://github.com/Ashutosh00567)  
+GitHub: [@Ashujais](https://github.com/Ashujais)  
 Email: ashutoshhjp00567@gmail.com
